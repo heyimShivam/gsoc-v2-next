@@ -1,0 +1,1 @@
+export type FilterSection = "categories" | "technologies" | "topics";
