@@ -1,14 +1,19 @@
 import { Organization } from "@/types/Organization";
-
+import Image from "next/image";
 export default function LogoTile({ org }: {
     org: Organization;
 }) {
-    return <div className={`logo-tile ${org.color}`}>
-        <span>
-            {org.initials}
-        </span>
-        <b>
-            {org.name}
-        </b>
+    console.log("logo", org);
+    return <div className={`logo-tile`} style={{ backgroundColor: org.imageBackgroundColor }}>
+
+        <div className="org-logo-container">
+            <Image
+                src={org.imageUrl}
+                alt={org.name}
+                width={200}
+                height={300}
+                className="org-logo-image"
+            />
+        </div>
     </div>;
 }

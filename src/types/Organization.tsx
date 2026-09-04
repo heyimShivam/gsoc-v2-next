@@ -1,14 +1,13 @@
 export type Organization = {
-    id: string;
-    name: string;
-    initials: string;
+    activeOrg: boolean;
     description: string;
-    years: string;
-    status: "Active" | "Inactive";
-    category: string;
+    githubID: string;
+    id: string;
+    imageBackgroundColor: string;
+    imageUrl: string;
+    name: string;
     technologies: string[];
+    years: string[];
+    category: string[];
     topics: string[];
-    color: string;
-    stars: number;
-    people: number;
 };

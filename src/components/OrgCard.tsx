@@ -6,7 +6,6 @@ export function OrgCard({ org, list = false }: {
     org: Organization;
     list?: boolean;
 }) {
-    console.log(org, list);
     return (<><Link
         href={`/organizations/${org.id}`}
         className={list ? "org-card list-card" : "org-card"}
@@ -17,8 +16,14 @@ export function OrgCard({ org, list = false }: {
                 <h3>
                     {org.name}
                 </h3>
-                <span className={org.status === "Active" ? "status done" : "status inactive-status"}>
-                    {org.status}
+                <span
+                    className={
+                        org.activeOrg
+                            ? "status done"
+                            : "status inactive-status"
+                    }
+                >
+                    {org.activeOrg ? "Active" : "Inactive"}
                 </span>
             </div>
             <p>
@@ -31,18 +36,15 @@ export function OrgCard({ org, list = false }: {
                     {org.topics.length + 2}
                 </span>
             </div>
-            <div className="org-card-footer">
-                <span>
-                    {org.years}
-                </span>
-                <span>
-                    <Star size={14} />
-                    {org.stars}
-                </span>
-                <span>
-                    <UsersRound size={14} />
-                    {org.people}
-                </span>
+            <div className="org-card-footer years-wrap">
+                {org.years.map((year) => (
+                    <span
+                        key={year}
+                        className="whitespace-nowrap"
+                    >
+                        {year}
+                    </span>
+                ))}
             </div>
         </div>
     </Link></>);

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import "./approved-overrides.css";
+import "@/css/globals.css";
+import "@/css/approved-overrides.css"
 
 export const metadata: Metadata = {
   title: "GSoC Hub | Find your open-source fit",

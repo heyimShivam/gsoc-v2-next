@@ -2,43 +2,106 @@
 
 import { SiteHeader } from "@/components/SiteHeader";
 import { Search, ChevronDown, SlidersHorizontal, Filter, Grid2X2, List } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import AdvancedFilterModal from "@/components/AdvancedFilterModal";
 import { OrgCard } from "@/components/OrgCard";
 import { Organization } from "@/types/Organization";
 import Pill from "@/components/Pill";
+import Pagination from "@/components/Pagination";
 
-const organizations: Organization[] = [
-    { id: "52north", name: "52°North", initials: "52", description: "Researching smart spatial information and open geoinformatics.", years: "2016 – 2026", status: "Inactive", category: "Research", technologies: ["Java", "Python", "Web"], topics: ["Geospatial", "Data"], color: "cyan", stars: 210, people: 67 },
-    { id: "aboutcode", name: "AboutCode", initials: "AC", description: "Open source data and licensing tools for everyone.", years: "2017 – 2026", status: "Active", category: "Developer Tools", technologies: ["Python", "JavaScript", "C++"], topics: ["Licensing", "Data"], color: "blue", stars: 210, people: 67 },
-    { id: "accord", name: "Accord Project", initials: "AP", description: "Open source automation for trusted agreements.", years: "2020 – 2026", status: "Inactive", category: "Open Source", technologies: ["JavaScript", "React", "Web"], topics: ["Legal", "Automation"], color: "violet", stars: 65, people: 21 },
-    { id: "aswf", name: "ASWF", initials: "AS", description: "Building an open ecosystem for visual effects and animation.", years: "2020 – 2022", status: "Active", category: "Media", technologies: ["Python", "C++", "OpenGL"], topics: ["Graphics", "Animation"], color: "orange", stars: 76, people: 28 },
-    { id: "aerospace", name: "AerospaceResearch.net", initials: "AR", description: "Making space and aerospace research accessible to all.", years: "2017 – 2021", status: "Inactive", category: "Research", technologies: ["Python", "CI/CD", "Web"], topics: ["Space", "Science"], color: "green", stars: 54, people: 18 },
-    { id: "openmesh", name: "OpenMesh", initials: "OM", description: "Modern tools and geometry processing for open research.", years: "2018 – 2025", status: "Active", category: "Developer Tools", technologies: ["C++", "Python", "Web"], topics: ["Graphics", "Research"], color: "pink", stars: 92, people: 40 },
-];
+
 type FilterSection = "categories" | "technologies" | "topics";
-const years = ["Only in 2026", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"];
-const categoryOptions = Array.from(new Set(organizations.map((organization) => organization.category))).sort();
-const technologyOptions = Array.from(new Set(organizations.flatMap((organization) => organization.technologies))).sort();
-const topicOptions = Array.from(new Set(organizations.flatMap((organization) => organization.topics))).sort();
 
 export default function ExplorerPage() {
-    const searchParams = useSearchParams();
-    const [query, setQuery] = useState(
-        searchParams.get("q") ?? ""
-    );
+    const [organizations, setOrganizations] = useState<Organization[]>([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [totalOrganizations, setTotalOrganizations] = useState(0);
+    const [searchOrgsName, setSearchOrgsName] = useState("");
+
+    const fetchOrganizations = async () => {
+        let reqBody = {
+            // "technologies": [
+            // "python"
+            // ],
+            // sortBy: "NAME",
+            // "activeOrg": true,
+            // sortDirection: "DESC"
+
+            orgName: searchOrgsName,
+            // years: [2018, 2020],
+            years: [],
+            // categories: ["s"],
+            // topics,
+            // technologies,
+            // activeOrg: true,
+            sortBy: "NAME",
+            sortDirection: "ASC"
+        };
+
+        try {
+            const response = await fetch(
+                `http://localhost:8080/api/organizations?page=${currentPage}&size=6`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(reqBody)
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch organizations");
+            }
+
+            const responseData = await response.json();
+
+            setOrganizations(responseData.data.content);
+            setTotalPages(responseData.data.totalPages);
+            setTotalOrganizations(responseData.data.totalRecords);
+        } catch (error) {
+            console.error("Error fetching organizations:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchOrganizations();
+    }, [currentPage]);
+
+    // Debouncing
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            fetchOrganizations();
+        }, 500);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [searchOrgsName]);
+
+    function searchNewOrganizations(placeholderValue: string) {
+        setSearchOrgsName(placeholderValue);
+    }
+    const years = ["Only in 2026", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"];
+    const categoryOptions = Array.from(new Set(organizations.map((organization) => organization.category))).sort();
+    const technologyOptions = Array.from(new Set(organizations.flatMap((organization) => organization.technologies))).sort();
+    const topicOptions = Array.from(new Set(organizations.flatMap((organization) => organization.topics))).sort();
+
+
     const [filterQuery, setFilterQuery] = useState("");
     const [selectedYears, setSelectedYears] = useState<string[]>([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
     const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
-    const [status, setStatus] = useState("Both");
+    const [status, setStatus] = useState<"Active" | "Inactive" | "Both">("Both");
     const [view, setView] = useState<"grid" | "list">("grid");
     const [sort, setSort] = useState("Relevance");
     const [filterOpen, setFilterOpen] = useState(false);
     const [yearsOpen, setYearsOpen] = useState(true);
     const [modal, setModal] = useState(false);
+    const [statusOpen, setStatusOpen] = useState(true);
     const [sections, setSections] = useState<Record<FilterSection, boolean>>({ categories: false, technologies: false, topics: false });
     const normalizedFilterQuery = filterQuery.toLowerCase();
     const visibleYears = years.filter((year) => year.toLowerCase().includes(normalizedFilterQuery));
@@ -52,14 +115,7 @@ export default function ExplorerPage() {
         const targetYear = selectedYear === "Only in 2026" ? 2026 : Number(selectedYear);
         return targetYear >= firstYear && targetYear <= lastYear;
     };
-    const results = useMemo(() => organizations
-        .filter((org) => (status === "Both" || org.status === status)
-            && (selectedYears.length === 0 || selectedYears.some((year) => organizationMatchesYear(org, year)))
-            && (selectedCategories.length === 0 || selectedCategories.includes(org.category))
-            && (selectedTechnologies.length === 0 || selectedTechnologies.some((technology) => org.technologies.includes(technology)))
-            && (selectedTopics.length === 0 || selectedTopics.some((topic) => org.topics.includes(topic)))
-            && [org.name, org.description, org.category, ...org.technologies, ...org.topics].join(" ").toLowerCase().includes(query.toLowerCase()))
-        .sort((a, b) => sort === "Most starred" ? b.stars - a.stars : a.name.localeCompare(b.name)), [query, selectedCategories, selectedTechnologies, selectedTopics, selectedYears, status, sort]);
+    const results = organizations;
     const toggleYear = (year: string) => setSelectedYears((old) => old.includes(year) ? old.filter((item) => item !== year) : [...old, year]);
     const toggleSelection = (value: string, setSelection: React.Dispatch<React.SetStateAction<string[]>>) => setSelection((old) => old.includes(value) ? old.filter((item) => item !== value) : [...old, value]);
     const clearFilters = () => { setSelectedYears([]); setSelectedCategories([]); setSelectedTechnologies([]); setSelectedTopics([]); setStatus("Both"); setFilterQuery(""); };
@@ -72,6 +128,7 @@ export default function ExplorerPage() {
         </p>;
     };
     const activeFilterCount = selectedYears.length + selectedCategories.length + selectedTechnologies.length + selectedTopics.length + (status === "Both" ? 0 : 1);
+
     return <main className="app-shell explorer-shell">
         <SiteHeader />
         <div className="explorer-layout">
@@ -101,7 +158,7 @@ export default function ExplorerPage() {
                             Years
                         </strong>
                         <ChevronDown
-                            className={yearsOpen ? "" : "rotated"}
+                            className={yearsOpen ? "rotated" : ""}
                             size={16}
                         />
                     </button>
@@ -113,13 +170,45 @@ export default function ExplorerPage() {
                     {sections[id] && renderSelectableOptions(options, selected, toggle)}
                 </section>)}
                 <section className="filter-section">
-                    <button className="section-toggle">
+                    <button
+                        className="section-toggle"
+                        onClick={() => setStatusOpen(!statusOpen)}
+                    >
                         <strong>
                             Status
                         </strong>
-                        <ChevronDown size={16} />
+
+                        <ChevronDown
+                            className={statusOpen ? "rotated" : ""}
+                            size={16}
+                        />
                     </button>
-                    {["Active", "Inactive", "Both"].map((item) => <label className="radio-row" key={item}><input type="radio" name="status" checked={status === item} onChange={() => setStatus(item)} /><span className={`status-dot ${item.toLowerCase()}`} />{item}</label>)}
+
+                    {statusOpen && (
+                        <>
+                            {["Active", "Inactive", "Both"].map((item) => (
+                                <label
+                                    className="radio-row"
+                                    key={item}
+                                >
+                                    <input
+                                        type="radio"
+                                        name="status"
+                                        checked={status === item}
+                                        onChange={() =>
+                                            setStatus(item as "Active" | "Inactive" | "Both")
+                                        }
+                                    />
+
+                                    <span
+                                        className={`status-dot ${item.toLowerCase()}-dot`}
+                                    />
+
+                                    {item}
+                                </label>
+                            ))}
+                        </>
+                    )}
                 </section>
                 <button
                     className="primary-button filter-apply"
@@ -149,7 +238,7 @@ export default function ExplorerPage() {
                 <div className="explorer-heading">
                     <div>
                         <h1>
-                            522 Organizations
+                            {totalOrganizations} Organizations
                         </h1>
                         <p>
                             Discover organizations participating in Google Summer of Code
@@ -163,13 +252,10 @@ export default function ExplorerPage() {
                                 onChange={(event) => setSort(event.target.value)}
                             >
                                 <option>
-                                    Relevance
-                                </option>
-                                <option>
-                                    Most starred
-                                </option>
-                                <option>
                                     Name
+                                </option>
+                                <option>
+                                    Popularity
                                 </option>
                             </select>
                         </label>
@@ -192,14 +278,17 @@ export default function ExplorerPage() {
                 <label className="wide-search">
                     <Search size={20} />
                     <input
-                        value={query}
-                        onChange={(event) => setQuery(event.target.value)}
+                        value={searchOrgsName}
+                        onChange={(event) => searchNewOrganizations(event.target.value)}
                         placeholder="Search organizations..."
                     />
                 </label>
                 <div className={view === "grid" ? "organization-grid" : "organization-list"}>
                     {results.map((org) => <OrgCard key={org.id} org={org} list={view === "list"} />)}
                 </div>
+
+                <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+
                 {!results.length && <div className="empty-state">No organizations match this sample query.</div>}
             </section>
         </div>
