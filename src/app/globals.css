@@ -2550,7 +2550,8 @@ button {
 
 .filter-pill {
   cursor: pointer;
-  transition: background .15s, border-color .15s
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .filter-pill:hover {
