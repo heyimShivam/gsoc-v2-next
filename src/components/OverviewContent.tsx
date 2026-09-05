@@ -17,6 +17,7 @@ import {
 import TagContent from "./TagContent";
 import { OrganizationDetails } from "@/types/OrganizationDetails";
 import { ProjectsPerYear } from "@/types/ProjectsPerYear";
+import TopContributors from "./TopContributors";
 
 Chart.register(
   LineController,
@@ -196,6 +197,8 @@ export default function OverviewContent({
         title="Categories"
         tags={data.categories}
       />
+
+      <TopContributors orgId={data.id} />
     </div>
   );
 }

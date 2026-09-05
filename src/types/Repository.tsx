@@ -10,3 +10,17 @@ export type Repository = {
     openIssues: number;
     topics: string[];
 };
+
+export interface RepositoryApiData {
+    content: Repository[];
+    page: number;
+    size: number;
+    totalRecords: number;
+    totalPages: number;
+    first: boolean;
+    last: boolean;
+}
+
+export interface RepositoryResponse {
+    data: RepositoryApiData;
+}

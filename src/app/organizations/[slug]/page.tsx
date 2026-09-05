@@ -38,6 +38,7 @@ import { Repository } from "@/types/Repository";
 import { Tab } from "@/types/Tab";
 import { ProjectsPerYear } from "@/types/ProjectsPerYear";
 import ProjectTabOrganization from "@/components/ProjectTabOrganization";
+import RepoTabOrg from "@/components/RepoTabOrg";
 
 export default function OrganizationDetailPage() {
     const params = useParams();
@@ -365,144 +366,7 @@ export default function OrganizationDetailPage() {
                 {tab ===
                     "Repositories" && (
                         <section>
-                            <div className="detail-section">
-                                <h2>
-                                    GitHub
-                                    Repositories
-                                </h2>
-
-                                <p>
-                                    {
-                                        repositories.length
-                                    }{" "}
-                                    repositories
-                                </p>
-                            </div>
-
-                            {!repositories.length ? (
-                                <div className="empty-state">
-                                    No repositories
-                                    found.
-                                </div>
-                            ) : (
-                                <div className="organization-grid">
-                                    {repositories.map(
-                                        (
-                                            repository
-                                        ) => (
-                                            <article
-                                                className="org-card"
-                                                key={
-                                                    repository.id
-                                                }
-                                            >
-                                                <div className="org-card-body">
-                                                    <h3>
-                                                        {
-                                                            repository.fullName
-                                                        }
-                                                    </h3>
-
-                                                    <p>
-                                                        {
-                                                            repository.description
-                                                        }
-                                                    </p>
-
-                                                    <div className="metadata">
-                                                        <span>
-                                                            <Star
-                                                                size={
-                                                                    15
-                                                                }
-                                                            />
-
-                                                            {
-                                                                repository.stars
-                                                            }
-                                                        </span>
-
-                                                        <span>
-                                                            <GitFork
-                                                                size={
-                                                                    15
-                                                                }
-                                                            />
-
-                                                            {
-                                                                repository.forks
-                                                            }
-                                                        </span>
-
-                                                        <span>
-                                                            <CircleDot
-                                                                size={
-                                                                    15
-                                                                }
-                                                            />
-
-                                                            {
-                                                                repository.openIssues
-                                                            }
-                                                        </span>
-
-                                                        {repository.language && (
-                                                            <span>
-                                                                {
-                                                                    repository.language
-                                                                }
-                                                            </span>
-                                                        )}
-                                                    </div>
-                                                </div>
-
-                                                {repository
-                                                    .topics
-                                                    .length >
-                                                    0 && (
-                                                        <div className="org-card-footer">
-                                                            {repository.topics
-                                                                .slice(
-                                                                    0,
-                                                                    5
-                                                                )
-                                                                .map(
-                                                                    (
-                                                                        topic
-                                                                    ) => (
-                                                                        <span
-                                                                            key={
-                                                                                topic
-                                                                            }
-                                                                            className="tag"
-                                                                        >
-                                                                            {
-                                                                                topic
-                                                                            }
-                                                                        </span>
-                                                                    )
-                                                                )}
-                                                        </div>
-                                                    )}
-
-                                                <div className="org-card-footer">
-                                                    <a
-                                                        href={
-                                                            repository.htmlUrl
-                                                        }
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        View
-                                                        on
-                                                        GitHub
-                                                    </a>
-                                                </div>
-                                            </article>
-                                        )
-                                    )}
-                                </div>
-                            )}
+                            <RepoTabOrg orgId={organizationId} />
                         </section>
                     )}
 
@@ -530,7 +394,7 @@ export default function OrganizationDetailPage() {
                  * component is preserved.
                  */}
                 {tab === "Contributors" && (
-                    <ContributorPreview />
+                    <ContributorPreview orgId={organizationId} />
                 )}
             </section>
         </main>
