@@ -10,4 +10,14 @@ export type Organization = {
     years: string[];
     category: string[];
     topics: string[];
+    width: number;
+    height: number;
 };
+
+export type organizationImage = {
+    imageBackgroundColor: string;
+    imageUrl: string;
+    name: string;
+    width: number;
+    height: number;
+}

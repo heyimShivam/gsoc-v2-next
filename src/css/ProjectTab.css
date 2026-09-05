@@ -1,0 +1,1011 @@
+/* =========================================
+   PROJECT TAB
+========================================= */
+
+.projects-tab {
+    width: 100%;
+    min-height: 400px;
+    color: #f8fafc;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.projects-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+
+    margin-bottom: 24px;
+}
+
+.projects-heading {
+    max-width: 650px;
+}
+
+.projects-label {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #3b82f6;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+}
+
+.projects-heading h2 {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 26px;
+    font-weight: 700;
+
+    letter-spacing: -0.02em;
+}
+
+.projects-heading p {
+    margin: 9px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   SELECTED YEAR
+========================================= */
+
+.selected-year-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 110px;
+
+    padding: 12px 18px;
+
+    background: #111827;
+
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+}
+
+.selected-year-card span {
+    color: #64748b;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+}
+
+.selected-year-card strong {
+    margin-top: 5px;
+
+    color: #60a5fa;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* =========================================
+   YEAR PAGINATION
+========================================= */
+
+.year-pagination {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    padding-bottom: 22px;
+    margin-bottom: 25px;
+
+    border-bottom: 1px solid #1e293b;
+}
+
+.year-button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    color: #94a3b8;
+
+    background: #111827;
+
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.year-button:hover {
+    color: #e2e8f0;
+
+    border-color: #3b82f6;
+
+    transform: translateY(-2px);
+}
+
+.year-button.active {
+    color: #ffffff;
+
+    background: linear-gradient(135deg,
+            #2563eb,
+            #3b82f6);
+
+    border-color: #60a5fa;
+
+    box-shadow:
+        0 6px 18px rgba(37, 99, 235, 0.28);
+}
+
+.year-text {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.project-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 21px;
+    height: 21px;
+
+    padding: 0 6px;
+
+    color: inherit;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    border-radius: 999px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* =========================================
+   RESULT INFO
+========================================= */
+
+.projects-result-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+.projects-result-info strong {
+    color: #e2e8f0;
+}
+
+.result-year {
+    padding: 5px 10px;
+
+    color: #60a5fa;
+
+    background: rgba(59, 130, 246, 0.1);
+
+    border: 1px solid rgba(59, 130, 246, 0.18);
+
+    border-radius: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* =========================================
+   PROJECT GRID
+========================================= */
+
+.projects-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+/* =========================================
+   PROJECT CARD
+========================================= */
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 260px;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(145deg,
+            #151e2d,
+            #111827);
+
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(59, 130, 246, 0.7);
+
+    box-shadow:
+        0 20px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.project-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.project-year-badge {
+    padding: 5px 10px;
+
+    color: #60a5fa;
+
+    background: rgba(59, 130, 246, 0.1);
+
+    border: 1px solid rgba(59, 130, 246, 0.2);
+
+    border-radius: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.project-number {
+    color: #334155;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.project-card h3 {
+    margin: 0 0 12px;
+
+    color: #f1f5f9;
+
+    font-size: 16px;
+    font-weight: 650;
+
+    line-height: 1.5;
+}
+
+.project-description {
+    display: -webkit-box;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+    line-height: 1.65;
+
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* =========================================
+   CARD FOOTER
+========================================= */
+
+.project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.student-info {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+.student-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    color: #bfdbfe;
+
+    background:
+        linear-gradient(135deg,
+            #1e3a5f,
+            #172554);
+
+    border: 1px solid #2563eb;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.student-info div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.student-info span {
+    color: #64748b;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.07em;
+}
+
+.student-info strong {
+    max-width: 170px;
+
+    overflow: hidden;
+
+    margin-top: 2px;
+
+    color: #cbd5e1;
+
+    font-size: 11px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.project-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    color: #60a5fa;
+
+    background: rgba(59, 130, 246, 0.08);
+
+    border: 1px solid rgba(59, 130, 246, 0.15);
+
+    border-radius: 8px;
+
+    font-size: 17px;
+
+    transition: all 0.2s ease;
+}
+
+.project-card:hover .project-arrow {
+    color: white;
+
+    background: #2563eb;
+
+    transform: translateX(3px);
+}
+
+/* =========================================
+   EMPTY / ERROR STATE
+========================================= */
+
+.projects-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 280px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background: #111827;
+
+    border: 1px dashed #334155;
+    border-radius: 14px;
+}
+
+.state-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    margin-bottom: 16px;
+
+    color: #60a5fa;
+
+    background: rgba(59, 130, 246, 0.1);
+
+    border-radius: 12px;
+
+    font-size: 24px;
+}
+
+.error-icon {
+    color: #f87171;
+
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.projects-state h3 {
+    margin: 0 0 8px;
+
+    color: #e2e8f0;
+
+    font-size: 17px;
+}
+
+.projects-state p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+.retry-button {
+    margin-top: 20px;
+    padding: 9px 18px;
+
+    color: white;
+
+    background: #2563eb;
+
+    border: 1px solid #3b82f6;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition: 0.2s ease;
+}
+
+.retry-button:hover {
+    background: #3b82f6;
+
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   SHIMMER
+========================================= */
+
+.project-skeleton {
+    pointer-events: none;
+}
+
+.skeleton-row {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.skeleton-footer {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: auto;
+}
+
+.shimmer {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #1e293b;
+
+    border-radius: 6px;
+}
+
+.shimmer::after {
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    content: "";
+
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.08),
+            transparent);
+
+    animation: shimmer-animation 1.4s infinite;
+}
+
+.shimmer-badge {
+    width: 50px;
+    height: 24px;
+}
+
+.shimmer-number {
+    width: 38px;
+    height: 24px;
+}
+
+.shimmer-title {
+    width: 78%;
+    height: 22px;
+
+    margin-bottom: 20px;
+}
+
+.shimmer-line {
+    width: 100%;
+    height: 12px;
+
+    margin-bottom: 10px;
+}
+
+.shimmer-line.short {
+    width: 70%;
+}
+
+.shimmer-avatar {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+}
+
+.shimmer-name {
+    width: 110px;
+    height: 13px;
+}
+
+@keyframes shimmer-animation {
+    100% {
+        left: 100%;
+    }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .projects-header {
+        flex-direction: column;
+    }
+
+    .selected-year-card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-tab {
+        width: 100%;
+    }
+
+    .projects-heading h2 {
+        font-size: 22px;
+    }
+
+    .year-pagination {
+        gap: 6px;
+    }
+
+    .year-button {
+        padding: 8px 10px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-result-info {
+        align-items: flex-start;
+
+        gap: 10px;
+
+        flex-direction: column;
+    }
+
+    .project-card {
+        min-height: 230px;
+    }
+}
+
+/* =========================================
+   PROJECTS HEADER
+========================================= */
+
+.projects-header {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 32px;
+
+    align-items: stretch;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+.projects-heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.projects-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    color: #3B82F6;
+
+    margin-bottom: 8px;
+}
+
+.projects-heading h2 {
+    margin: 0;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    letter-spacing: -0.02em;
+
+    color: #E5E7EB;
+}
+
+.projects-heading p {
+    max-width: 520px;
+
+    margin: 10px 0 0;
+
+    color: #94A3B8;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MINI CHART CARD
+========================================= */
+
+.projects-header-chart {
+    position: relative;
+
+    min-height: 170px;
+
+    padding: 18px 20px 14px;
+
+    border: 1px solid #1E293B;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(30, 41, 59, 0.65),
+            rgba(11, 15, 26, 0.9));
+
+    overflow: hidden;
+
+    transition: border-color 0.25s ease;
+}
+
+.projects-header-chart:hover {
+    border-color: rgba(59, 130, 246, 0.45);
+}
+
+
+/* subtle glow */
+
+.projects-header-chart::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -60px;
+
+    background: rgba(59, 130, 246, 0.12);
+
+    filter: blur(45px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   CHART HEADING
+========================================= */
+
+.mini-chart-heading {
+    position: relative;
+
+    z-index: 1;
+
+    margin-bottom: 6px;
+}
+
+.mini-chart-heading div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.mini-chart-heading span {
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+
+    color: #3B82F6;
+}
+
+.mini-chart-heading strong {
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #CBD5E1;
+}
+
+
+/* =========================================
+   CHART
+========================================= */
+
+.projects-history-chart {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    height: 105px;
+}
+
+.projects-history-chart canvas {
+    width: 100% !important;
+
+    height: 100% !important;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .projects-header {
+        grid-template-columns: 1fr 340px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+
+    .projects-header {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .projects-heading h2 {
+        font-size: 25px;
+    }
+
+    .projects-header-chart {
+        min-height: 160px;
+    }
+
+}
+
+.projects-mini-chart {
+    width: 100%;
+    height: 170px;
+
+    /* Remove card/background */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    position: relative;
+
+    /* Helps canvas use the space properly */
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+.projects-mini-chart canvas {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block;
+}
+
+.projects-hero-content {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 28%);
+
+    align-items: center;
+
+    column-gap: clamp(24px, 4vw, 64px);
+
+    padding: 20px 0 26px;
+}
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+.projects-hero-content {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 420px);
+
+    align-items: center;
+
+    /* Responsive horizontal spacing */
+    column-gap: clamp(30px, 5vw, 80px);
+
+    padding: 20px 0 26px;
+}
+
+.projects-hero-details {
+    min-width: 0;
+}
+
+.projects-chart-wrapper {
+    width: 100%;
+    height: 220px;
+
+    min-width: 0;
+}
+
+
+/* =========================================
+   LARGE SCREENS
+========================================= */
+
+@media (min-width: 1400px) {
+
+    .projects-hero-content {
+        column-gap: 70px;
+    }
+
+    .projects-chart-wrapper {
+        height: 230px;
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .projects-hero-content {
+        grid-template-columns: minmax(0, 1fr) 360px;
+
+        column-gap: 35px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .projects-hero-content {
+        display: flex;
+        flex-direction: column;
+
+        gap: 20px;
+
+        padding: 14px 0 20px;
+    }
+
+    .projects-chart-wrapper {
+        order: 1;
+
+        width: 100%;
+        height: 190px;
+    }
+
+    .projects-hero-details {
+        order: 2;
+    }
+
+}

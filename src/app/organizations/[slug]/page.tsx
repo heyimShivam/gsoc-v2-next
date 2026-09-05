@@ -1,5 +1,27 @@
 "use client";
 
+import {
+    ArrowLeft,
+    ExternalLink,
+    MapPin,
+    Star,
+    GitFork,
+    CircleDot,
+    Globe,
+    GithubIcon,
+    LucideGithub,
+    Github,
+    Contact2Icon,
+    Contact2,
+    ContactRoundIcon,
+    MailPlusIcon,
+    TwitterIcon,
+    XIcon,
+    LucidePaperclip,
+    ComputerIcon,
+    Mail,
+    Rss
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
@@ -10,70 +32,12 @@ import OverviewContent from "@/components/OverviewContent";
 import ProjectPreview from "@/components/ProjectPreview";
 import { SiteHeader } from "@/components/SiteHeader";
 import TagContent from "@/components/TagContent";
-
-import {
-    ArrowLeft,
-    ExternalLink,
-    MapPin,
-    Star,
-    GitFork,
-    CircleDot
-} from "lucide-react";
-
-type OrganizationDetails = {
-    id: string;
-    name: string;
-    imageUrl: string;
-    imageBackgroundColor: string;
-    description: string;
-    url: string | null;
-    githubId: string | null;
-    activeOrg: boolean;
-    years: number[];
-    categories: string[];
-    topics: string[];
-    technologies: string[];
-    contactInfo: {
-        ircChannel: string | null;
-        contactEmail: string | null;
-        mailingList: string | null;
-        twitterUrl: string | null;
-        blogUrl: string | null;
-        facebookUrl: string | null;
-    };
-};
-
-type Repository = {
-    id: string;
-    name: string;
-    fullName: string;
-    htmlUrl: string;
-    description: string | null;
-    language: string | null;
-    stars: number;
-    forks: number;
-    openIssues: number;
-    topics: string[];
-};
-
-type Project = {
-    id: string;
-    year: number;
-    title: string;
-    shortDescription: string;
-    studentName: string;
-    codeUrl: string | null;
-    proposalId: string | null;
-    projectUrl: string | null;
-};
-
-type Tab =
-    | "Overview"
-    | "Projects"
-    | "Repositories"
-    | "Technologies"
-    | "Topics"
-    | "Contributors";
+import { OrganizationDetails } from "@/types/OrganizationDetails";
+import { Project } from "@/types/Project";
+import { Repository } from "@/types/Repository";
+import { Tab } from "@/types/Tab";
+import { ProjectsPerYear } from "@/types/ProjectsPerYear";
+import ProjectTabOrganization from "@/components/ProjectTabOrganization";
 
 export default function OrganizationDetailPage() {
     const params = useParams();
@@ -90,8 +54,8 @@ export default function OrganizationDetailPage() {
     const [repositories, setRepositories] =
         useState<Repository[]>([]);
 
-    const [projects, setProjects] =
-        useState<Project[]>([]);
+    const [projectsPerYear, setProjectsPerYear] =
+        useState<ProjectsPerYear[]>([]);
 
     const [tab, setTab] =
         useState<Tab>("Overview");
@@ -140,13 +104,13 @@ export default function OrganizationDetailPage() {
                  */
                 const [
                     repositoriesResponse,
-                    projectsResponse
+                    projectsPerYearResponse
                 ] = await Promise.all([
                     fetch(
                         `http://localhost:8080/api/repositories/${organizationId}?size=50`
                     ),
                     fetch(
-                        `http://localhost:8080/api/projects/${organizationId}?page=1&size=24`
+                        `http://localhost:8080/api/projects/${organizationId}/years`
                     )
                 ]);
 
@@ -159,12 +123,12 @@ export default function OrganizationDetailPage() {
                     );
                 }
 
-                if (projectsResponse.ok) {
+                if (projectsPerYearResponse.ok) {
                     const projectsData =
-                        await projectsResponse.json();
+                        await projectsPerYearResponse.json();
 
-                    setProjects(
-                        projectsData.data.content
+                    setProjectsPerYear(
+                        projectsData.data
                     );
                 }
             } catch (error) {
@@ -223,129 +187,92 @@ export default function OrganizationDetailPage() {
             <SiteHeader />
 
             <section className="detail-top">
-                <Link
-                    href="/explore"
-                    className="back-link"
-                >
-                    <ArrowLeft size={15} />
-                    Back to organizations
+                <Link href="/explore" className="back-link">
+                    <ArrowLeft size={16} /> Back to organizations
                 </Link>
 
                 <div className="detail-profile">
-                    {/*
-                     * LogoTile is preserved.
-                     *
-                     * We pass a small object that matches
-                     * the organization information it
-                     * normally needs.
-                     */}
-                    <LogoTile
-                        org={{
-                            id: organization.id,
-                            name: organization.name,
-                            initials:
-                                organization.name
-                                    .slice(0, 2)
-                                    .toUpperCase(),
-                            description:
-                                organization.description,
-                            years:
-                                organization.years.join(
-                                    " – "
-                                ),
-                            status:
-                                statusText,
-                            category:
-                                organization
-                                    .categories[0] ??
-                                "",
-                            technologies:
-                                organization.technologies,
-                            topics:
-                                organization.topics,
-                            color: "blue",
-                            stars: 0,
-                            people: 0
-                        }}
-                    />
-
+                    <LogoTile org={{
+                        imageBackgroundColor: organization.imageBackgroundColor,
+                        imageUrl: organization.imageUrl,
+                        name: organization.name,
+                        width: 200,
+                        height: 300
+                    }} />
                     <div>
                         <div className="title-line">
-                            <h1>
-                                {
-                                    organization.name
-                                }
-                            </h1>
+                            <h1> {organization.name} </h1>
 
-                            <span
-                                className={
-                                    organization.activeOrg
-                                        ? "status done"
-                                        : "status inactive-status"
-                                }
-                            >
+                            <span className={organization.activeOrg ? "status done" : "status inactive-status"}>
                                 {statusText}
                             </span>
                         </div>
 
-                        {/*
-                         * Keep the existing hardcoded
-                         * subtitle/details here because
-                         * there is no corresponding field
-                         * in your organization endpoint.
-                         */}
-                        <h2>
-                            52°North Spatial
-                            Information Research
-                            GmbH
-                        </h2>
+                        <h2> {organization.name} </h2>
 
-                        <p>
-                            Innovative ideas &
-                            technologies in
-                            geoinformatics
-                        </p>
+                        <p> {organization.description} </p>
 
                         <div className="metadata">
                             {organization.url && (
-                                <a
-                                    href={
-                                        organization.url
-                                    }
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <ExternalLink
-                                        size={15}
-                                    />
-
-                                    {
-                                        organization.url
-                                    }
+                                <a href={organization.url} target="_blank" rel="noopener noreferrer" style={{ color: '#43a6ff' }}>
+                                    <Globe size={17} /> {new URL(organization.url).hostname.replace("www.", "")}
                                 </a>
                             )}
 
-                            {organization.githubId && (
-                                <a
-                                    href={`https://github.com/${organization.githubId}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <ExternalLink
-                                        size={15}
-                                    />
+                            <div className="vertical-line"></div>
 
-                                    GitHub
-                                </a>
-                            )}
-
-                            <span>
-                                <MapPin
-                                    size={15}
-                                />
-
-                                Münster, Germany
+                            <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                                <MapPin size={17} /> Remote
                             </span>
+
+                            <div className="vertical-line"></div>
+                            {organization.githubId && (
+                                <a href={`https://github.com/${organization.githubId}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer" >
+                                    <Github size={17} />
+                                </a>
+                            )}
+
+                            {organization.contactInfo.ircChannel && (
+                                <a href={organization.contactInfo.ircChannel}
+                                    target="_blank"
+                                    rel="noopener noreferrer" >
+                                    <ContactRoundIcon size={17} />
+                                </a>
+                            )}
+
+                            {organization.contactInfo.contactEmail && (
+                                <a href={organization.contactInfo.contactEmail}
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <Mail size={17} />
+                                </a>
+                            )}
+
+                            {organization.contactInfo.mailingList && (
+                                <a href={organization.contactInfo.mailingList}
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <MailPlusIcon size={17} />
+                                </a>
+                            )}
+
+                            {organization.contactInfo.twitterUrl && (
+                                <a href={organization.contactInfo.twitterUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <XIcon size={17} />
+                                </a>
+                            )}
+
+                            {organization.contactInfo.blogUrl && (
+                                <a href={organization.contactInfo.blogUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <Rss size={17} />
+                                </a>
+                            )}
                         </div>
                     </div>
 
@@ -406,16 +333,16 @@ export default function OrganizationDetailPage() {
                  * hardcoded component.
                  */}
                 {tab === "Overview" && (
-                    <OverviewContent />
+                    <OverviewContent data={organization} projectsPerYear={projectsPerYear} />
                 )}
 
                 {/*
                  * Projects now use your backend
-                 * projects endpoint.
+                 * projectsPerYear endpoint.
                  */}
                 {tab === "Projects" && (
                     <>
-                        {projects.length === 0 ? (
+                        {projectsPerYear.length === 0 ? (
                             /*
                              * Keep your existing hardcoded
                              * ProjectPreview as fallback.
@@ -423,86 +350,8 @@ export default function OrganizationDetailPage() {
                             <ProjectPreview />
                         ) : (
                             <section>
-                                <div className="detail-section">
-                                    <h2>
-                                        GSoC Projects
-                                    </h2>
-
-                                    <p>
-                                        {
-                                            projects.length
-                                        }{" "}
-                                        projects
-                                    </p>
-                                </div>
-
-                                <div className="organization-grid">
-                                    {projects.map(
-                                        (
-                                            project
-                                        ) => (
-                                            <article
-                                                className="org-card"
-                                                key={
-                                                    project.id
-                                                }
-                                            >
-                                                <div className="org-card-header">
-                                                    <span className="status">
-                                                        {
-                                                            project.year
-                                                        }
-                                                    </span>
-                                                </div>
-
-                                                <div className="org-card-body">
-                                                    <h3>
-                                                        {
-                                                            project.title
-                                                        }
-                                                    </h3>
-
-                                                    <p>
-                                                        {
-                                                            project.shortDescription
-                                                        }
-                                                    </p>
-
-                                                    <strong>
-                                                        {
-                                                            project.studentName
-                                                        }
-                                                    </strong>
-                                                </div>
-
-                                                <div className="org-card-footer">
-                                                    {project.projectUrl && (
-                                                        <a
-                                                            href={
-                                                                project.projectUrl
-                                                            }
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                        >
-                                                            Project
-                                                        </a>
-                                                    )}
-
-                                                    {project.codeUrl && (
-                                                        <a
-                                                            href={
-                                                                project.codeUrl
-                                                            }
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                        >
-                                                            Code
-                                                        </a>
-                                                    )}
-                                                </div>
-                                            </article>
-                                        )
-                                    )}
+                                <div className="">
+                                    <ProjectTabOrganization projectsPerYear={projectsPerYear} organizationId={organizationId} />
                                 </div>
                             </section>
                         )}
@@ -657,10 +506,7 @@ export default function OrganizationDetailPage() {
                         </section>
                     )}
 
-                {/*
-                 * These use the backend organization
-                 * endpoint instead of hardcoded tags.
-                 */}
+
                 {tab === "Technologies" && (
                     <TagContent
                         title="Technologies"
