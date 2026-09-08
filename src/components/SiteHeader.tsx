@@ -4,30 +4,16 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import {
-    ArrowRight,
-    BarChart3,
-    BookOpen,
-    CheckCircle2,
-    ChevronDown,
-    CircleUserRound,
-    Code2,
-    Compass,
-    ExternalLink,
-    Github,
     Menu,
     Search,
-    SlidersHorizontal,
     Sparkles,
-    Star,
-    UsersRound,
     X,
 } from "lucide-react";
 
 const navItems = [
     { label: "Explore", href: "/explore" },
     { label: "About", href: "/about" },
-    { label: "Guide", href: "/guide" },
-    { label: "Contributors", href: "/contributors" },
+    { label: "Guide", href: "/guide" }
 ];
 
 export function SiteHeader({ landing = false }: { landing?: boolean }) {

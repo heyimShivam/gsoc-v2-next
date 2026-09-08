@@ -1,6 +1,5 @@
 "use client";
 
-import { GlowOrb } from "@/components/GlowOrb";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ArrowRight, Search, BarChart3, UsersRound } from "lucide-react";
 import Link from "next/link";
@@ -44,7 +43,6 @@ export default function AboutPage() {
                 role="img"
                 aria-label="Connected open-source world globe"
             >
-                <GlowOrb />
             </div>
         </section>
         <section className="value-grid">

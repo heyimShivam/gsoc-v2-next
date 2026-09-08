@@ -1,20 +1,14 @@
 import { FeatureCard } from "@/components/FeatureCard";
-import { GlowOrb } from "@/components/GlowOrb";
+import HomePageAnimationBG from "@/components/HomePageAnimationBG";
 import { SiteHeader } from "@/components/SiteHeader";
-import { ArrowRight, SlidersHorizontal, BarChart3, UsersRound, BookOpen, Compass } from "lucide-react";
-import Link from "next/link";
+
+import { SlidersHorizontal, BarChart3, UsersRound, BookOpen, Compass } from "lucide-react";
 
 export default function Home() {
   return <main className="app-shell landing-shell">
     <SiteHeader landing />
-    <section className="landing-hero">
-      <div className="hero-copy">
-        <span className="eyebrow"><span /> Open Source. Real Impact.</span>
-        <h1>Find Your Perfect <em>GSoC Organization</em></h1>
-        <p>Discover, explore and analyze organizations that participate in Google Summer of Code. Make data-driven decisions for your open-source journey.</p>
-        <div className="hero-ctas"><Link href="/explore" className="primary-button">Explore Organizations <ArrowRight size={19} /></Link><Link href="/guide" className="secondary-button">Learn More</Link></div>
-      </div>
-      <GlowOrb />
+    <section>
+      <HomePageAnimationBG />
     </section>
     <section className="feature-grid" id="about">
       <FeatureCard icon={<SlidersHorizontal size={22} />} title="Smart Filters" copy="Find what matches you" />
