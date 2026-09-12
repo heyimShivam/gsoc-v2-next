@@ -8,6 +8,7 @@ import {
     Code2,
     Lightbulb,
     UsersRound,
+    ChevronsRight
 } from "lucide-react";
 
 import "./GuideHeader.css";
@@ -19,25 +20,6 @@ export default function GuideHeader() {
             <div className="guideHeaderBackground" aria-hidden="true">
                 <div className="guideHeaderGlow guideHeaderGlowLeft" />
                 <div className="guideHeaderGlow guideHeaderGlowRight" />
-
-                <div className="guideHeaderGrid">
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                </div>
-
-                <div className="guideHeaderTopLine">
-                    <span />
-                </div>
             </div>
 
             <div className="guideHeaderContainer">
@@ -69,13 +51,13 @@ export default function GuideHeader() {
                             <ArrowRight size={20} />
                         </Link>
 
-                        <Link
+                        {/* <Link
                             href="/guide"
                             className="guideHeaderSecondaryButton"
                         >
                             <BookOpen size={19} />
                             <span>Read the Full Guide</span>
-                        </Link>
+                        </Link> */}
                     </div>
 
                     <div className="guideHeaderTrust">
@@ -199,9 +181,9 @@ export default function GuideHeader() {
                     {/* Bottom journey */}
                     <div className="guideVisualJourney">
                         <span>Students</span>
-                        <b>→</b>
+                        <ChevronsRight size={14} />
                         <span>Contributors</span>
-                        <b>→</b>
+                        <ChevronsRight size={14} />
                         <span>Stronger Communities</span>
                     </div>
                 </div>
