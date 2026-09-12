@@ -181,7 +181,7 @@ export default function ExplorerPage() {
                 };
 
                 const response = await fetch(
-                    `http://localhost:8080/api/organizations?page=${currentPage}&size=6`,
+                    `http://localhost:8080/api/organizations?page=${currentPage}&size=9`,
                     {
                         method: "POST",
                         headers: {

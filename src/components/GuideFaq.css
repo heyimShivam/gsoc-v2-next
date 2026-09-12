@@ -1,0 +1,1121 @@
+/* =========================================================
+   GUIDE FAQ
+   ========================================================= */
+
+.guideFaq {
+    position: relative;
+    width: 100%;
+    padding: 70px 0 80px;
+    background:
+        radial-gradient(circle at 78% 25%,
+            rgba(0, 91, 190, 0.08),
+            transparent 34%),
+        #020b16;
+    color: #eef5fc;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.guideFaqContainer {
+    width: min(1440px, calc(100% - 120px));
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   TOP AREA
+   ========================================================= */
+
+.guideFaqTop {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.18fr) minmax(400px, 0.92fr);
+    gap: 32px;
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   FAQ CONTENT
+   ========================================================= */
+
+.guideFaqContent {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   FAQ HEADER
+   ========================================================= */
+
+.guideFaqHeadingRow {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 18px;
+}
+
+
+.guideFaqBadge {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 23px;
+
+    padding: 5px 12px;
+
+    border: 1px solid rgba(20, 132, 241, 0.72);
+    border-radius: 6px;
+
+    background: rgba(5, 38, 75, 0.42);
+
+    color: #168cff;
+
+    font-size: 0.67rem;
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+
+.guideFaqTitle {
+    margin: 9px 0 0;
+
+    color: #f6f9fd;
+
+    font-size: clamp(1.9rem,
+            2.5vw,
+            2.5rem);
+
+    font-weight: 700;
+
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+}
+
+
+.guideFaqDescription {
+    max-width: 620px;
+
+    margin: 8px 0 0;
+
+    color: #9fb0c5;
+
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+
+.guideFaqViewAll {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+
+    margin-bottom: 4px;
+
+    color: #1687ff;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease,
+        gap 0.2s ease;
+}
+
+
+.guideFaqViewAll:hover {
+    gap: 10px;
+    color: #54aaff;
+}
+
+
+/* =========================================================
+   FAQ LIST
+   ========================================================= */
+
+.guideFaqList {
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+.guideFaqItem {
+    overflow: hidden;
+
+    border:
+        1px solid rgba(20, 105, 185, 0.52);
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(4, 24, 44, 0.82),
+            rgba(3, 17, 32, 0.72));
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.guideFaqItem:hover,
+.guideFaqItemOpen {
+    border-color:
+        rgba(21, 126, 222, 0.78);
+
+    background:
+        rgba(4, 23, 43, 0.92);
+
+    box-shadow:
+        0 8px 22px rgba(0, 61, 120, 0.08);
+}
+
+
+/* =========================================================
+   FAQ QUESTION
+   ========================================================= */
+
+.guideFaqQuestion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    min-height: 52px;
+
+    padding: 12px 15px;
+
+    border: 0;
+    outline: none;
+
+    background: transparent;
+
+    color: #dce8f3;
+
+    font-family: inherit;
+
+    font-size: 0.76rem;
+    font-weight: 500;
+
+    line-height: 1.45;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+.guideFaqQuestion>span:first-child {
+    min-width: 0;
+
+    padding-right: 18px;
+}
+
+
+.guideFaqQuestionIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex:
+        0 0 25px;
+
+    width: 25px;
+    height: 25px;
+
+    border:
+        1px solid rgba(62, 112, 160, 0.52);
+
+    border-radius: 50%;
+
+    color: #8da8c2;
+
+    transition:
+        transform 0.22s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.guideFaqItemOpen .guideFaqQuestionIcon {
+    transform: rotate(180deg);
+
+    border-color:
+        rgba(32, 139, 255, 0.72);
+
+    background:
+        rgba(10, 76, 140, 0.16);
+
+    color: #43a3ff;
+}
+
+
+/* =========================================================
+   FAQ ANSWER
+   ========================================================= */
+
+.guideFaqAnswer {
+    display: grid;
+
+    grid-template-rows: 0fr;
+
+    transition:
+        grid-template-rows 0.28s ease;
+}
+
+
+.guideFaqAnswer p {
+    min-height: 0;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    padding:
+        0 15px;
+
+    color: #91a7bc;
+
+    font-size: 0.69rem;
+
+    line-height: 1.65;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.2s ease,
+        padding 0.28s ease;
+}
+
+
+.guideFaqItemOpen .guideFaqAnswer {
+    grid-template-rows: 1fr;
+}
+
+
+.guideFaqItemOpen .guideFaqAnswer p {
+    padding:
+        0 15px 15px;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   SUPPORT CARD
+   ========================================================= */
+
+.guideFaqSupport {
+    position: relative;
+
+    min-height: 100%;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    padding: 20px 22px;
+
+    border:
+        1px solid rgba(21, 111, 202, 0.55);
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(5, 30, 57, 0.96),
+            rgba(2, 15, 31, 0.98));
+
+    box-shadow:
+        inset 0 1px 0 rgba(91, 168, 255, 0.05),
+        0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =========================================================
+   SUPPORT DECORATION
+   ========================================================= */
+
+.guideFaqSupportGlow {
+    position: absolute;
+
+    top: -70px;
+    right: -45px;
+
+    width: 210px;
+    height: 210px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 99, 255, 0.13);
+
+    filter: blur(28px);
+
+    pointer-events: none;
+}
+
+
+.guideFaqSupportWave {
+    position: absolute;
+
+    right: -15px;
+    top: 5px;
+
+    width: 290px;
+    height: 165px;
+
+    opacity: 0.9;
+
+    pointer-events: none;
+}
+
+
+.guideFaqSupportWave::before,
+.guideFaqSupportWave::after,
+.guideFaqSupportWave span {
+    position: absolute;
+
+    display: block;
+
+    content: "";
+
+    border:
+        1px solid rgba(0, 106, 255, 0.26);
+
+    border-radius: 50%;
+
+    transform: rotate(27deg);
+}
+
+
+.guideFaqSupportWave::before {
+    right: -75px;
+    top: 8px;
+
+    width: 265px;
+    height: 125px;
+}
+
+
+.guideFaqSupportWave::after {
+    right: -58px;
+    top: 25px;
+
+    width: 235px;
+    height: 108px;
+
+    border-color:
+        rgba(0, 132, 255, 0.18);
+}
+
+
+.guideFaqSupportWave span {
+    right: -42px;
+    top: 42px;
+
+    width: 205px;
+    height: 88px;
+
+    border-color:
+        rgba(0, 142, 255, 0.12);
+}
+
+
+/* =========================================================
+   SUPPORT ICON
+   ========================================================= */
+
+.guideFaqSupportIcon {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    border:
+        1px solid rgba(20, 116, 221, 0.42);
+
+    border-radius: 11px;
+
+    background:
+        rgba(5, 35, 68, 0.86);
+
+    color: #48a4ff;
+
+    box-shadow:
+        0 9px 24px rgba(0, 74, 160, 0.17);
+}
+
+
+.guideFaqSupportIcon svg {
+    width: 28px;
+    height: 28px;
+}
+
+
+/* =========================================================
+   SUPPORT CONTENT
+   ========================================================= */
+
+.guideFaqSupportContent {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 15px;
+}
+
+
+.guideFaqSupportContent h3 {
+    margin: 0;
+
+    color: #e9f2fb;
+
+    font-size: 1.05rem;
+    font-weight: 650;
+
+    line-height: 1.25;
+}
+
+
+.guideFaqSupportContent p {
+    max-width: 360px;
+
+    margin: 7px 0 15px;
+
+    color: #8fa4b9;
+
+    font-size: 0.69rem;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   SUPPORT BUTTONS
+   ========================================================= */
+
+.guideFaqSupportActions {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.guideFaqDiscordButton,
+.guideFaqContactButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    min-height: 34px;
+
+    padding:
+        7px 12px;
+
+    border-radius: 6px;
+
+    font-size: 0.64rem;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.guideFaqDiscordButton {
+    border:
+        1px solid rgba(34, 136, 255, 0.72);
+
+    background:
+        #087cf3;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 6px 16px rgba(0, 91, 220, 0.2);
+}
+
+
+.guideFaqContactButton {
+    border:
+        1px solid rgba(56, 105, 151, 0.58);
+
+    background:
+        rgba(4, 26, 47, 0.84);
+
+    color: #b7c9da;
+}
+
+
+.guideFaqDiscordButton:hover,
+.guideFaqContactButton:hover {
+    transform:
+        translateY(-2px);
+}
+
+
+.guideFaqDiscordButton:hover {
+    background:
+        #1588ff;
+}
+
+
+.guideFaqContactButton:hover {
+    border-color:
+        rgba(49, 132, 218, 0.7);
+}
+
+
+/* =========================================================
+   HANDWRITTEN NOTE
+   ========================================================= */
+
+.guideFaqSupportNote {
+    position: absolute;
+
+    z-index: 3;
+
+    top: 22px;
+    right: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    color: #b6c4d2;
+
+    font-family:
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 0.61rem;
+
+    font-style: italic;
+
+    line-height: 1.35;
+
+    transform:
+        rotate(-9deg);
+}
+
+
+.guideFaqHeart {
+    position: absolute;
+
+    right: -8px;
+    bottom: -18px;
+
+    color: #167fff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 1.05rem;
+
+    transform:
+        rotate(12deg);
+}
+
+
+/* =========================================================
+   BOTTOM CTA
+   ========================================================= */
+
+.guideFaqCta {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    min-height: 78px;
+
+    margin-top: 18px;
+
+    padding:
+        14px 18px 14px 20px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid rgba(19, 107, 193, 0.62);
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(90deg,
+            rgba(4, 23, 42, 0.94),
+            rgba(3, 19, 35, 0.78));
+
+    box-shadow:
+        inset 0 1px 0 rgba(85, 161, 235, 0.035),
+        0 12px 32px rgba(0, 0, 0, 0.14);
+}
+
+
+/* =========================================================
+   CTA ICON
+   ========================================================= */
+
+.guideFaqCtaIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex:
+        0 0 46px;
+
+    width: 46px;
+    height: 46px;
+
+    border:
+        1px solid rgba(21, 119, 219, 0.42);
+
+    border-radius: 10px;
+
+    background:
+        rgba(4, 39, 73, 0.88);
+
+    color: #3b9aff;
+}
+
+
+.guideFaqCtaIcon svg {
+    width: 23px;
+    height: 23px;
+}
+
+
+/* =========================================================
+   CTA CONTENT
+   ========================================================= */
+
+.guideFaqCtaContent {
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.guideFaqCtaContent h3 {
+    margin: 0;
+
+    color: #e8f0f8;
+
+    font-size: 1.05rem;
+
+    font-weight: 650;
+
+    line-height: 1.25;
+}
+
+
+.guideFaqCtaContent p {
+    margin: 5px 0 0;
+
+    color: #8da2b7;
+
+    font-size: 0.69rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CTA BUTTON
+   ========================================================= */
+
+.guideFaqCtaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+
+    min-width: 125px;
+    min-height: 36px;
+
+    padding:
+        8px 13px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid rgba(45, 147, 255, 0.82);
+
+    border-radius: 6px;
+
+    background:
+        linear-gradient(180deg,
+            #1688ff,
+            #0875e5);
+
+    color: #ffffff;
+
+    font-size: 0.64rem;
+    font-weight: 650;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 7px 16px rgba(0, 99, 222, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+.guideFaqCtaButton:hover {
+    filter: brightness(1.08);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1700px) {
+
+    .guideFaqContainer {
+        width: 1480px;
+    }
+
+    .guideFaqTop {
+        gap: 38px;
+    }
+
+    .guideFaqQuestion {
+        min-height: 55px;
+
+        padding:
+            13px 17px;
+
+        font-size: 0.79rem;
+    }
+
+    .guideFaqAnswer p {
+        padding-left: 17px;
+        padding-right: 17px;
+
+        font-size: 0.72rem;
+    }
+
+    .guideFaqSupport {
+        padding:
+            22px 24px;
+    }
+
+    .guideFaqCta {
+        min-height: 82px;
+    }
+}
+
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1300px) {
+
+    .guideFaqContainer {
+        width:
+            calc(100% - 70px);
+    }
+
+    .guideFaqTop {
+        grid-template-columns:
+            minmax(0, 1.15fr) minmax(360px, 0.85fr);
+
+        gap: 26px;
+    }
+
+    .guideFaqTitle {
+        font-size: 2rem;
+    }
+
+    .guideFaqQuestion {
+        min-height: 49px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .guideFaq {
+        padding:
+            60px 0 70px;
+    }
+
+    .guideFaqContainer {
+        width:
+            calc(100% - 48px);
+    }
+
+    .guideFaqTop {
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+    .guideFaqSupport {
+        min-height: 235px;
+    }
+
+    .guideFaqSupportContent p {
+        max-width: 430px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .guideFaq {
+        padding:
+            50px 0 60px;
+    }
+
+    .guideFaqContainer {
+        width:
+            calc(100% - 28px);
+    }
+
+
+    /* Header */
+
+    .guideFaqHeadingRow {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+        margin-bottom: 16px;
+    }
+
+    .guideFaqTitle {
+        font-size: 1.8rem;
+    }
+
+    .guideFaqDescription {
+        font-size: 0.74rem;
+
+        line-height: 1.55;
+    }
+
+    .guideFaqViewAll {
+        margin-bottom: 0;
+
+        font-size: 0.68rem;
+    }
+
+
+    /* Questions */
+
+    .guideFaqList {
+        gap: 8px;
+    }
+
+    .guideFaqQuestion {
+        min-height: 50px;
+
+        padding:
+            11px 12px;
+
+        font-size: 0.71rem;
+    }
+
+    .guideFaqQuestionIcon {
+        flex-basis: 24px;
+
+        width: 24px;
+        height: 24px;
+    }
+
+    .guideFaqAnswer p {
+        padding:
+            0 12px;
+
+        font-size: 0.68rem;
+    }
+
+    .guideFaqItemOpen .guideFaqAnswer p {
+        padding:
+            0 12px 13px;
+    }
+
+
+    /* Support */
+
+    .guideFaqSupport {
+        min-height: 220px;
+
+        padding:
+            18px;
+    }
+
+    .guideFaqSupportIcon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .guideFaqSupportContent {
+        margin-top: 13px;
+    }
+
+    .guideFaqSupportContent h3 {
+        font-size: 1rem;
+    }
+
+    .guideFaqSupportContent p {
+        max-width: 330px;
+
+        font-size: 0.68rem;
+    }
+
+
+    /* CTA */
+
+    .guideFaqCta {
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+
+        gap: 13px;
+
+        min-height: auto;
+
+        padding:
+            15px;
+    }
+
+    .guideFaqCtaContent {
+        flex:
+            1 1 calc(100% - 65px);
+    }
+
+    .guideFaqCtaContent h3 {
+        font-size: 1rem;
+    }
+
+    .guideFaqCtaContent p {
+        font-size: 0.67rem;
+    }
+
+    .guideFaqCtaButton {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .guideFaqContainer {
+        width:
+            calc(100% - 20px);
+    }
+
+    .guideFaqTitle {
+        font-size: 1.65rem;
+    }
+
+    .guideFaqBadge {
+        font-size: 0.58rem;
+    }
+
+    .guideFaqQuestion {
+        min-height: 48px;
+
+        padding:
+            10px;
+
+        font-size: 0.68rem;
+    }
+
+    .guideFaqSupportNote {
+        display: none;
+    }
+
+    .guideFaqSupportWave {
+        right: -90px;
+    }
+
+    .guideFaqSupportActions {
+        flex-wrap: wrap;
+    }
+
+    .guideFaqCtaIcon {
+        flex-basis: 42px;
+
+        width: 42px;
+        height: 42px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .guideFaqItem,
+    .guideFaqQuestionIcon,
+    .guideFaqAnswer,
+    .guideFaqViewAll,
+    .guideFaqDiscordButton,
+    .guideFaqContactButton,
+    .guideFaqCtaButton {
+        transition: none;
+    }
+}

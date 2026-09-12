@@ -77,13 +77,17 @@ button {
 }
 
 .site-header {
+  position: relative;
+  z-index: 1000;
+
   height: 62px;
   display: flex;
   align-items: center;
   gap: 32px;
   padding: 0 clamp(24px, 4vw, 68px);
+
   border-bottom: 1px solid #1d4874;
-  background: rgba(5, 13, 27, .86);
+  background: rgba(5, 13, 27, .92);
   backdrop-filter: blur(15px);
 }
 
@@ -196,10 +200,6 @@ button {
   background: transparent;
   color: #fff;
   border: 0;
-}
-
-.landing-shell {
-  padding-bottom: 32px;
 }
 
 .landing-hero {
@@ -1067,14 +1067,15 @@ button {
     padding: 12px 20px;
     flex-direction: column;
     align-items: stretch;
-    background: #091426;
+    background-color: #091426;
     border: 1px solid #24486f;
     border-radius: 10px;
-    z-index: 10
+    z-index: 120;
   }
 
   .main-nav a {
-    height: 40px
+    height: 40px;
+    z-index: 120;
   }
 
   .main-nav a.active:after {
@@ -1082,6 +1083,7 @@ button {
     right: auto;
     width: 3px;
     top: 0;
+    z-index: 120;
     bottom: 0
   }
 
@@ -1278,15 +1280,25 @@ button {
 .explorer-layout {
   position: relative;
   height: calc(100vh - 62px);
-  z-index: 1;
+  z-index: 999;
   display: grid;
-  grid-template-columns: 270px 1fr
+  grid-template-columns: 270px 1fr;
+  overflow-y: scroll;
 }
 
 .filters {
   padding: 22px 16px;
   border-right: 1px solid #1c4168;
-  background: rgba(7, 18, 35, .76)
+  background: rgba(7, 18, 35, .76);
+  height: calc(100vh - 62px);
+  overflow-y: scroll;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
 }
 
 .filters-title,
@@ -1427,6 +1439,7 @@ button {
 
 .explorer-content {
   padding: 30px clamp(20px, 3vw, 48px);
+  z-index: 99;
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -1628,21 +1641,41 @@ button {
 
 .modal-backdrop {
   position: fixed;
-  z-index: 50;
   inset: 0;
-  display: grid;
-  place-items: center;
+  width: 100%;
+  height: 100dvh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 20px;
-  background: rgba(0, 5, 14, .74);
-  backdrop-filter: blur(8px)
+
+  background: rgba(2, 8, 20, 0.72);
+  backdrop-filter: blur(5px);
+
+  z-index: 9999;
 }
 
 .advanced-modal {
-  width: min(720px, 100%);
-  border: 1px solid #3c6d9d;
-  border-radius: 12px;
-  background: #09182b;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, .55)
+  position: relative;
+  z-index: 10000;
+
+  width: min(760px, 100%);
+  max-height: calc(100dvh - 40px);
+
+  display: flex;
+  flex-direction: column;
+
+  background: #081426;
+  border: 1px solid #214b78;
+  border-radius: 14px;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.55),
+    0 0 35px rgba(37, 131, 255, 0.08);
+
+  overflow: hidden;
 }
 
 .modal-title {
@@ -1664,7 +1697,7 @@ button {
 .modal-body {
   display: grid;
   grid-template-columns: 180px 1fr;
-  min-height: 280px
+  min-height: 400px
 }
 
 .modal-body nav {
@@ -1690,7 +1723,15 @@ button {
 }
 
 .modal-options {
-  padding: 25px
+  padding: 25px;
+  max-height: 400px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-options::-webkit-scrollbar {
+  display: none;
 }
 
 .modal-options h3 {
