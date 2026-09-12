@@ -1,0 +1,654 @@
+.contactSection {
+    position: relative;
+
+    width: 100%;
+
+    padding: 110px 0 100px;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.contactContainer {
+    width: min(1280px, calc(100% - 48px));
+
+    margin: 0 auto;
+}
+
+
+/* =====================================================
+   MAIN PANEL
+===================================================== */
+
+.contactPanel {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 0.92fr 1.08fr;
+
+    min-height: 600px;
+
+    border: 1px solid rgba(59, 130, 246, 0.32);
+
+    border-radius: 18px;
+
+    background:
+        radial-gradient(circle at 12% 45%,
+            rgba(37, 99, 235, 0.12),
+            transparent 32%),
+        linear-gradient(135deg,
+            rgba(7, 29, 56, 0.82),
+            rgba(3, 15, 30, 0.94));
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.28),
+        0 0 70px rgba(37, 99, 235, 0.06);
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   LEFT SIDE
+===================================================== */
+
+.contactIntro {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 70px 65px;
+
+    border-right: 1px solid rgba(59, 130, 246, 0.12);
+
+    overflow: hidden;
+}
+
+
+/* subtle blue glow */
+
+.contactIntro::before {
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    left: -180px;
+    top: 35%;
+
+    border-radius: 50%;
+
+    background: rgba(37, 99, 235, 0.13);
+
+    filter: blur(85px);
+
+    pointer-events: none;
+}
+
+
+/* small blue glow */
+
+.contactIntro::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -100px;
+    bottom: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(37, 99, 235, 0.08);
+
+    filter: blur(60px);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   BADGE
+===================================================== */
+
+.contactBadge {
+    position: relative;
+
+    z-index: 1;
+
+    width: fit-content;
+
+    margin-bottom: 24px;
+
+    padding: 7px 13px;
+
+    border: 1px solid rgba(59, 130, 246, 0.55);
+
+    border-radius: 999px;
+
+    background: rgba(37, 99, 235, 0.07);
+
+    color: #60a5fa;
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.contactTitle {
+    position: relative;
+
+    z-index: 1;
+
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: clamp(3rem, 4vw, 4.2rem);
+
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.045em;
+}
+
+.contactTitle span {
+    display: block;
+
+    margin-top: 8px;
+
+    background: linear-gradient(90deg,
+            #3b82f6,
+            #60a5fa);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.contactDescription {
+    position: relative;
+
+    z-index: 1;
+
+    max-width: 500px;
+
+    margin: 28px 0 45px;
+
+    color: rgba(148, 163, 184, 0.85);
+
+    font-size: 0.95rem;
+
+    line-height: 1.75;
+}
+
+
+/* =====================================================
+   CONTACT DETAILS
+===================================================== */
+
+.contactDetails {
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 27px;
+}
+
+
+.contactDetail {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+.contactDetailIcon {
+    flex-shrink: 0;
+
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(37, 99, 235, 0.65);
+
+    border-radius: 13px;
+
+    background: rgba(37, 99, 235, 0.09);
+
+    color: #93c5fd;
+
+    box-shadow:
+        inset 0 0 20px rgba(37, 99, 235, 0.04),
+        0 0 25px rgba(37, 99, 235, 0.04);
+}
+
+
+.contactDetailContent {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.contactDetailContent span {
+    color: #94a3b8;
+
+    font-size: 0.76rem;
+}
+
+
+.contactDetailContent strong {
+    color: #f1f5f9;
+
+    font-size: 0.9rem;
+
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   BOTTOM TEXT
+===================================================== */
+
+.contactBottomText {
+    position: relative;
+
+    z-index: 1;
+
+    margin-top: 48px;
+
+    color: rgba(148, 163, 184, 0.62);
+
+    font-size: 0.78rem;
+}
+
+
+/* =====================================================
+   RIGHT FORM AREA
+===================================================== */
+
+.contactFormWrapper {
+    display: flex;
+
+    align-items: center;
+
+    padding: 48px;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.contactForm {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+
+/* =====================================================
+   FORM ROW
+===================================================== */
+
+.contactFormRow {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+}
+
+
+/* =====================================================
+   FIELD
+===================================================== */
+
+.contactField {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.contactField label {
+    color: #f1f5f9;
+
+    font-size: 0.78rem;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.contactField input,
+.contactField textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid rgba(59, 130, 246, 0.28);
+
+    border-radius: 11px;
+
+    outline: none;
+
+    background: rgba(3, 18, 35, 0.7);
+
+    color: #f8fafc;
+
+    font-family: inherit;
+
+    font-size: 0.88rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.contactField input {
+    height: 53px;
+
+    padding: 0 17px;
+}
+
+
+.contactField textarea {
+    min-height: 174px;
+
+    padding: 16px 17px;
+
+    resize: vertical;
+}
+
+
+.contactField input::placeholder,
+.contactField textarea::placeholder {
+    color: rgba(100, 130, 165, 0.8);
+}
+
+
+/* =====================================================
+   FOCUS
+===================================================== */
+
+.contactField input:focus,
+.contactField textarea:focus {
+    border-color: rgba(59, 130, 246, 0.75);
+
+    background: rgba(5, 25, 48, 0.82);
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.08),
+        0 0 25px rgba(37, 99, 235, 0.06);
+}
+
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.contactSubmit {
+    width: fit-content;
+
+    min-width: 185px;
+
+    height: 50px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 2px;
+
+    padding: 0 22px;
+
+    border: 1px solid rgba(96, 165, 250, 0.45);
+
+    border-radius: 9px;
+
+    background: linear-gradient(135deg,
+            #3b82f6,
+            #2563eb);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(37, 99, 235, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.contactSubmit:hover {
+    transform: translateY(-2px);
+
+    background: linear-gradient(135deg,
+            #4f8df7,
+            #2563eb);
+
+    box-shadow:
+        0 15px 35px rgba(37, 99, 235, 0.32);
+}
+
+
+.contactSubmit:active {
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .contactPanel {
+        grid-template-columns: 1fr;
+    }
+
+    .contactIntro {
+        padding: 55px 50px;
+
+        border-right: none;
+
+        border-bottom: 1px solid rgba(59, 130, 246, 0.12);
+    }
+
+    .contactFormWrapper {
+        padding: 45px 50px;
+    }
+
+    .contactTitle {
+        font-size: clamp(2.8rem, 7vw, 4rem);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .contactSection {
+        padding: 70px 0 70px;
+    }
+
+    .contactContainer {
+        width: calc(100% - 28px);
+    }
+
+    .contactPanel {
+        min-height: auto;
+
+        border-radius: 16px;
+    }
+
+    .contactIntro {
+        padding: 38px 25px;
+    }
+
+    .contactBadge {
+        margin-bottom: 20px;
+
+        font-size: 0.62rem;
+    }
+
+    .contactTitle {
+        font-size: 2.65rem;
+
+        line-height: 1;
+    }
+
+    .contactDescription {
+        margin: 22px 0 35px;
+
+        font-size: 0.84rem;
+
+        line-height: 1.65;
+    }
+
+    .contactDetails {
+        gap: 22px;
+    }
+
+    .contactDetail {
+        gap: 13px;
+    }
+
+    .contactDetailIcon {
+        width: 46px;
+        height: 46px;
+
+        border-radius: 11px;
+    }
+
+    .contactDetailContent strong {
+        font-size: 0.78rem;
+    }
+
+    .contactBottomText {
+        margin-top: 35px;
+    }
+
+    .contactFormWrapper {
+        padding: 30px 25px 35px;
+    }
+
+    .contactForm {
+        gap: 20px;
+    }
+
+    .contactFormRow {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .contactField input {
+        height: 50px;
+    }
+
+    .contactField textarea {
+        min-height: 145px;
+    }
+
+    .contactSubmit {
+        width: 100%;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .contactContainer {
+        width: calc(100% - 20px);
+    }
+
+    .contactIntro {
+        padding: 32px 20px;
+    }
+
+    .contactFormWrapper {
+        padding: 25px 20px 30px;
+    }
+
+    .contactTitle {
+        font-size: 2.35rem;
+    }
+
+    .contactDescription {
+        font-size: 0.8rem;
+    }
+}

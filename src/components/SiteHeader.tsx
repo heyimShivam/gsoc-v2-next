@@ -12,7 +12,6 @@ import {
 
 const navItems = [
     { label: "Explore", href: "/explore" },
-    { label: "About", href: "/about" },
     { label: "Guide", href: "/guide" }
 ];
 
