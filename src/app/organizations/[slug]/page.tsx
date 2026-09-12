@@ -40,6 +40,18 @@ import { ProjectsPerYear } from "@/types/ProjectsPerYear";
 import ProjectTabOrganization from "@/components/ProjectTabOrganization";
 import RepoTabOrg from "@/components/RepoTabOrg";
 
+type SortBy =
+    | "STARS"
+    | "FORKS"
+    | "OPEN_ISSUES";
+
+
+type Direction =
+    | "ASC"
+    | "DESC";
+
+
+
 export default function OrganizationDetailPage() {
     const params = useParams();
 
@@ -63,6 +75,16 @@ export default function OrganizationDetailPage() {
 
     const [loading, setLoading] =
         useState(true);
+
+    const [repoName, setRepoName] =
+        useState("");
+
+    const [sortBy, setSortBy] =
+        useState<SortBy>("STARS");
+
+    const [direction, setDirection] =
+        useState<Direction>("DESC");
+
 
     const [error, setError] =
         useState<string | null>(null);
@@ -108,7 +130,20 @@ export default function OrganizationDetailPage() {
                     projectsPerYearResponse
                 ] = await Promise.all([
                     fetch(
-                        `http://localhost:8080/api/repositories/${organizationId}?size=50`
+                        `http://localhost:8080/api/repositories/${organizationId}?size=50`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+
+                            body: JSON.stringify({
+                                repoName,
+                                sortBy,
+                                direction,
+                            })
+                        }
                     ),
                     fetch(
                         `http://localhost:8080/api/projects/${organizationId}/years`
