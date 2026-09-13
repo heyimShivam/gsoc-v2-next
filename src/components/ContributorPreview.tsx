@@ -88,7 +88,7 @@ export default function ContributorPreview({
 
             const response = await fetch(
 
-                `http://localhost:8080/api/organizations/${orgId}/contributors?page=${page}&size=${pageSize}`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/organizations/${orgId}/contributors?page=${page}&size=${pageSize}`,
 
                 {
                     signal,

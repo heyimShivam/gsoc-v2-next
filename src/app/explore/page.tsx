@@ -104,7 +104,7 @@ export default function ExplorerPage() {
         const fetchAllFilters = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:8080/api/all-filters"
+                    process.env.NEXT_PUBLIC_BACKEND_URL + "/api/all-filters"
                 );
 
                 if (!response.ok) {
@@ -181,7 +181,7 @@ export default function ExplorerPage() {
                 };
 
                 const response = await fetch(
-                    `http://localhost:8080/api/organizations?page=${currentPage}&size=9`,
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/organizations?page=${currentPage}&size=9`,
                     {
                         method: "POST",
                         headers: {

@@ -81,7 +81,7 @@ export default function RepoTabOrg({
 
             const response = await fetch(
 
-                `http://localhost:8080/api/repositories/${orgId}?page=${page}&size=${pageSize}`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/repositories/${orgId}?page=${page}&size=${pageSize}`,
 
                 {
                     method: "POST",

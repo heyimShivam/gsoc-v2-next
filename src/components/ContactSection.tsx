@@ -1,60 +1,99 @@
 "use client";
+
 import {
     Mail,
     MessageCircle,
     MapPin,
     Send,
+    Loader2,
 } from "lucide-react";
+
+import { toast } from "sonner";
 
 import "@/css/ContactSection.css";
 
 export default function ContactSection() {
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (
+        event: React.FormEvent<HTMLFormElement>
+    ) => {
         event.preventDefault();
 
         const form = event.currentTarget;
         const formData = new FormData(form);
 
-        console.log({
+        const data = {
             name: formData.get("name"),
             email: formData.get("email"),
             subject: formData.get("subject"),
             message: formData.get("message"),
-        });
+        };
 
-        // Clear all form fields
-        form.reset();
-        // Connect your API / Server Action here later.
+        try {
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/contact-us`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(
+                    `Request failed: ${response.status}`
+                );
+            }
+
+            const result = await response.json();
+
+            form.reset();
+
+            toast.success("Message sent successfully!", {
+                description:
+                    "Thanks for reaching out. We'll get back to you soon.",
+            });
+        } catch (error) {
+            toast.error("Failed to send message", {
+                description:
+                    "Something went wrong. Please try again.",
+            });
+        }
     };
 
     return (
-        <section className="contactSection" id="contact">
+        <section
+            className="contactSection"
+            id="contact"
+        >
             <div className="contactContainer">
-
                 <div className="contactPanel">
 
-                    {/* =========================
-                        LEFT SIDE
-                    ========================== */}
-                    <div className="contactIntro">
+                    {/* LEFT SIDE */}
 
+                    <div className="contactIntro">
                         <div className="contactBadge">
                             GET IN TOUCH
                         </div>
 
                         <h2 className="contactTitle">
                             Have a question?
-                            <span>Let&apos;s talk.</span>
+                            <span>
+                                Let&apos;s talk.
+                            </span>
                         </h2>
 
                         <p className="contactDescription">
-                            Have feedback, suggestions, or an idea for
-                            GSoC Hub? We&apos;d love to hear from you.
+                            Have feedback, suggestions, or an idea
+                            for GSoC Hub? We&apos;d love to hear
+                            from you.
                         </p>
 
                         <div className="contactDetails">
 
                             {/* Email */}
+
                             <div className="contactDetail">
                                 <div className="contactDetailIcon">
                                     <Mail size={21} />
@@ -62,6 +101,7 @@ export default function ContactSection() {
 
                                 <div className="contactDetailContent">
                                     <span>Email</span>
+
                                     <strong>
                                         hello@gsoc-hub.dev
                                     </strong>
@@ -69,6 +109,7 @@ export default function ContactSection() {
                             </div>
 
                             {/* Community */}
+
                             <div className="contactDetail">
                                 <div className="contactDetailIcon">
                                     <MessageCircle size={21} />
@@ -76,6 +117,7 @@ export default function ContactSection() {
 
                                 <div className="contactDetailContent">
                                     <span>Community</span>
+
                                     <strong>
                                         Open Source · GSoC
                                     </strong>
@@ -83,6 +125,7 @@ export default function ContactSection() {
                             </div>
 
                             {/* Built For */}
+
                             <div className="contactDetail">
                                 <div className="contactDetailIcon">
                                     <MapPin size={21} />
@@ -90,6 +133,7 @@ export default function ContactSection() {
 
                                 <div className="contactDetailContent">
                                     <span>Built for</span>
+
                                     <strong>
                                         Students · Mentors · OSS
                                     </strong>
@@ -101,20 +145,18 @@ export default function ContactSection() {
                         <div className="contactBottomText">
                             Open source. A brighter tomorrow. 🚀
                         </div>
-
                     </div>
 
-                    {/* =========================
-                        RIGHT SIDE
-                    ========================== */}
-                    <div className="contactFormWrapper">
+                    {/* RIGHT SIDE */}
 
+                    <div className="contactFormWrapper">
                         <form
                             className="contactForm"
                             onSubmit={handleSubmit}
                         >
 
                             {/* Name + Email */}
+
                             <div className="contactFormRow">
 
                                 <div className="contactField">
@@ -150,6 +192,7 @@ export default function ContactSection() {
                             </div>
 
                             {/* Subject */}
+
                             <div className="contactField">
                                 <label htmlFor="subject">
                                     Subject
@@ -165,6 +208,7 @@ export default function ContactSection() {
                             </div>
 
                             {/* Message */}
+
                             <div className="contactField">
                                 <label htmlFor="message">
                                     Message
@@ -180,20 +224,22 @@ export default function ContactSection() {
                             </div>
 
                             {/* Submit */}
+
                             <button
                                 type="submit"
                                 className="contactSubmit"
                             >
-                                <span>Send Message</span>
+                                <span>
+                                    Send Message
+                                </span>
+
                                 <Send size={19} />
                             </button>
 
                         </form>
-
                     </div>
 
                 </div>
-
             </div>
         </section>
     );

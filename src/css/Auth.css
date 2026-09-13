@@ -1,0 +1,978 @@
+.authPage {
+    position: relative;
+
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px;
+
+    background:
+        radial-gradient(circle at 50% 45%,
+            rgba(15, 91, 180, 0.13),
+            transparent 35%),
+        #020b1b;
+
+    color: #f5f8ff;
+
+    overflow: hidden;
+}
+
+/* =========================
+   STARS
+========================= */
+
+.authStars {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.authStars span {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: #64b5ff;
+
+    box-shadow:
+        0 0 6px rgba(64, 165, 255, 0.75);
+}
+
+.authStars span:nth-child(1) {
+    top: 7%;
+    left: 14%;
+}
+
+.authStars span:nth-child(2) {
+    top: 12%;
+    left: 78%;
+    width: 1px;
+    height: 1px;
+}
+
+.authStars span:nth-child(3) {
+    top: 24%;
+    left: 91%;
+}
+
+.authStars span:nth-child(4) {
+    top: 38%;
+    left: 8%;
+    width: 1px;
+    height: 1px;
+}
+
+.authStars span:nth-child(5) {
+    top: 51%;
+    left: 94%;
+}
+
+.authStars span:nth-child(6) {
+    top: 70%;
+    left: 6%;
+}
+
+.authStars span:nth-child(7) {
+    top: 82%;
+    left: 88%;
+    width: 1px;
+    height: 1px;
+}
+
+.authStars span:nth-child(8) {
+    top: 18%;
+    left: 47%;
+    width: 1px;
+    height: 1px;
+}
+
+/* =========================
+   CARD
+========================= */
+.authCard {
+    position: relative;
+    z-index: 2;
+
+    width: min(456px, 100%);
+
+    margin: 0;
+
+    padding: 28px 34px 0;
+
+    border: 1px solid rgba(28, 117, 204, 0.55);
+    border-radius: 16px;
+
+    background:
+        linear-gradient(180deg,
+            rgba(7, 25, 49, 0.96),
+            rgba(3, 16, 33, 0.98));
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.42),
+        0 0 45px rgba(0, 105, 220, 0.06);
+
+    overflow: hidden;
+}
+
+/* =========================
+   BACK
+========================= */
+
+.authBack {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #d2dfef;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.authBack:hover {
+    color: #42a5ff;
+    transform: translateX(-2px);
+}
+
+/* =========================
+   BRAND
+========================= */
+
+.authBrand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 8px;
+
+    text-align: center;
+}
+
+.authBrandMark {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 9px;
+
+    border: 1px solid #168cff;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(145deg,
+            #168cff,
+            #0757bd);
+
+    color: #fff;
+
+    box-shadow:
+        0 0 25px rgba(19, 133, 255, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    transform: rotate(45deg);
+}
+
+.authBrandMark span {
+    font-size: 14px;
+    font-weight: 800;
+
+    transform: rotate(-45deg);
+}
+
+.authBrand h1 {
+    margin: 0;
+
+    font-size: 27px;
+    line-height: 1.1;
+    font-weight: 750;
+    letter-spacing: -0.04em;
+}
+
+.authBrand h1 span {
+    color: #168cff;
+}
+
+.authBrand p {
+    margin: 7px 0 0;
+
+    color: #9eb2ca;
+
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+/* =========================
+   HEADING
+========================= */
+
+.authHeading {
+    margin-top: 27px;
+
+    text-align: center;
+}
+
+.authHeading h2 {
+    margin: 0;
+
+    font-size: 29px;
+    line-height: 1.2;
+    font-weight: 750;
+
+    letter-spacing: -0.035em;
+}
+
+.authHeading p {
+    max-width: 330px;
+
+    margin: 7px auto 0;
+
+    color: #a9bad0;
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+
+    margin-top: 23px;
+}
+
+.authField {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    height: 50px;
+
+    border: 1px solid #1b4b79;
+    border-radius: 9px;
+
+    background: rgba(8, 28, 52, 0.76);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.authField:focus-within {
+    border-color: #278cff;
+
+    background: rgba(9, 32, 59, 0.9);
+
+    box-shadow:
+        0 0 0 3px rgba(39, 140, 255, 0.08),
+        0 0 20px rgba(39, 140, 255, 0.07);
+}
+
+.authFieldIcon {
+    width: 50px;
+
+    display: grid;
+    place-items: center;
+
+    color: #9bb0c9;
+
+    flex: 0 0 50px;
+}
+
+.authField input {
+    width: 100%;
+    height: 100%;
+
+    padding: 0 14px 0 0;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: #edf5ff;
+
+    font-size: 14px;
+}
+
+.authField input::placeholder {
+    color: #7890ab;
+}
+
+.authPasswordButton {
+    width: 42px;
+    height: 100%;
+
+    display: grid;
+    place-items: center;
+
+    flex: 0 0 42px;
+
+    border: 0;
+    background: transparent;
+
+    color: #8fa5bf;
+}
+
+.authPasswordButton:hover {
+    color: #42a5ff;
+}
+
+/* =========================
+   OPTIONS
+========================= */
+
+.authOptions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 1px;
+
+    font-size: 12px;
+}
+
+.authRemember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #aebed1;
+
+    cursor: pointer;
+}
+
+.authRemember input {
+    appearance: none;
+
+    width: 19px;
+    height: 19px;
+
+    margin: 0;
+
+    border: 1px solid #2c669b;
+    border-radius: 5px;
+
+    background: #07182c;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.authRemember input:checked {
+    border-color: #168cff;
+    background: #168cff;
+}
+
+.authRemember input:checked::after {
+    content: "✓";
+
+    position: absolute;
+    inset: 0;
+
+    display: grid;
+    place-items: center;
+
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.authOptions a,
+.authSwitch a,
+.authTerms a {
+    color: #2496ff;
+}
+
+.authOptions a:hover,
+.authSwitch a:hover,
+.authTerms a:hover {
+    color: #67b8ff;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.authPrimaryButton {
+    width: 100%;
+    height: 50px;
+
+    margin-top: 3px;
+
+    border: 1px solid #168cff;
+    border-radius: 9px;
+
+    background:
+        linear-gradient(135deg,
+            #168cff,
+            #0871dd);
+
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 24px rgba(0, 113, 231, 0.2);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.authPrimaryButton:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 11px 28px rgba(0, 113, 231, 0.3);
+}
+
+.authPrimaryButton:disabled {
+    opacity: 0.42;
+    cursor: not-allowed;
+
+    transform: none;
+    box-shadow: none;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.authDivider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin: 20px 0;
+}
+
+.authDivider span {
+    height: 1px;
+    flex: 1;
+
+    background: #193b60;
+}
+
+.authDivider b {
+    color: #7890aa;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* =========================
+   GOOGLE
+========================= */
+
+.authGoogleButton {
+    width: 100%;
+    height: 49px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+
+    border: 1px solid #dce3eb;
+    border-radius: 9px;
+
+    background: #f8fafc;
+
+    color: #17243a;
+
+    font-size: 14px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.authGoogleButton:hover {
+    background: #fff;
+    transform: translateY(-1px);
+}
+
+.googleLogo {
+    font-family: Arial, sans-serif;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #4285f4;
+}
+
+/* =========================
+   TERMS
+========================= */
+
+.authTerms {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+
+    color: #aabbd0;
+
+    font-size: 11.5px;
+    line-height: 1.5;
+
+    cursor: pointer;
+}
+
+.authCheckbox {
+    position: relative;
+
+    width: 19px;
+    height: 19px;
+
+    flex: 0 0 19px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid #2d679a;
+    border-radius: 5px;
+
+    background: #07182c;
+
+    color: white;
+}
+
+.authCheckbox.checked {
+    border-color: #168cff;
+    background: #168cff;
+}
+
+.authCheckbox input {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+/* =========================
+   SWITCH
+========================= */
+
+.authSwitch {
+    margin: 21px 0 0;
+
+    text-align: center;
+
+    color: #aabbd0;
+
+    font-size: 13px;
+}
+
+/* =========================
+   HORIZON
+========================= */
+
+.authHorizon {
+    position: relative;
+
+    height: 78px;
+
+    margin: 20px -34px 0;
+
+    overflow: hidden;
+}
+
+.authHorizonLine {
+    position: absolute;
+
+    left: -8%;
+    right: -8%;
+    bottom: -62px;
+
+    height: 125px;
+
+    border-top: 1px solid #1389ff;
+    border-radius: 50% 50% 0 0;
+
+    background:
+        radial-gradient(ellipse at 50% 0%,
+            rgba(15, 110, 222, 0.18),
+            transparent 62%);
+
+    box-shadow:
+        0 -3px 18px rgba(20, 136, 255, 0.22);
+}
+
+.authMountain {
+    position: absolute;
+
+    bottom: 5px;
+
+    width: 130px;
+    height: 52px;
+
+    border-top: 1px solid rgba(40, 151, 255, 0.65);
+
+    transform: rotate(-13deg);
+
+    opacity: 0.7;
+}
+
+.authMountainOne {
+    left: 43%;
+}
+
+.authMountainTwo {
+    left: 53%;
+
+    width: 90px;
+
+    transform:
+        rotate(12deg) scaleY(0.7);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.authFooter {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 0 0 20px;
+
+    color: #91a6bd;
+
+    font-size: 11px;
+}
+
+.authFooter span {
+    color: #3d5b78;
+}
+
+@media (max-width: 600px) {
+    .authPage {
+        min-height: 100svh;
+
+        padding: 18px 12px 30px;
+
+        align-items: flex-start;
+    }
+
+    .authCard {
+        width: 100%;
+
+        padding: 22px 20px 0;
+
+        border-radius: 13px;
+    }
+
+    .authBack {
+        font-size: 12px;
+    }
+
+    .authBrand {
+        margin-top: 5px;
+    }
+
+    .authBrandMark {
+        width: 43px;
+        height: 43px;
+    }
+
+    .authBrand h1 {
+        font-size: 24px;
+    }
+
+    .authBrand p {
+        font-size: 11px;
+    }
+
+    .authHeading {
+        margin-top: 22px;
+    }
+
+    .authHeading h2 {
+        font-size: 25px;
+    }
+
+    .authHeading p {
+        font-size: 12px;
+    }
+
+    .authForm {
+        margin-top: 19px;
+        gap: 11px;
+    }
+
+    .authField {
+        height: 48px;
+    }
+
+    .authFieldIcon {
+        width: 45px;
+        flex-basis: 45px;
+    }
+
+    .authField input {
+        font-size: 13px;
+    }
+
+    .authOptions {
+        font-size: 11px;
+    }
+
+    .authPrimaryButton {
+        height: 48px;
+        font-size: 14px;
+    }
+
+    .authDivider {
+        margin: 17px 0;
+    }
+
+    .authGoogleButton {
+        height: 47px;
+        font-size: 13px;
+    }
+
+    .authSwitch {
+        font-size: 12px;
+        margin-top: 18px;
+    }
+
+    .authHorizon {
+        margin-left: -20px;
+        margin-right: -20px;
+        height: 65px;
+    }
+
+    .authFooter {
+        font-size: 10px;
+        padding-bottom: 17px;
+    }
+
+    .authSignupCard {
+        padding-bottom: 0;
+    }
+
+    .authTerms {
+        font-size: 10.5px;
+    }
+}
+
+@media (max-width: 380px) {
+    .authPage {
+        padding: 10px 8px 20px;
+    }
+
+    .authCard {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .authHeading h2 {
+        font-size: 23px;
+    }
+
+    .authHeading p {
+        font-size: 11px;
+    }
+
+    .authOptions {
+        gap: 8px;
+    }
+
+    .authHorizon {
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .authPage {
+        min-height: 100svh;
+
+        padding: 18px 12px 30px;
+
+        align-items: flex-start;
+    }
+
+    .authCard {
+        width: 100%;
+
+        padding: 22px 20px 0;
+
+        border-radius: 13px;
+    }
+
+    .authBack {
+        font-size: 12px;
+    }
+
+    .authBrand {
+        margin-top: 5px;
+    }
+
+    .authBrandMark {
+        width: 43px;
+        height: 43px;
+    }
+
+    .authBrand h1 {
+        font-size: 24px;
+    }
+
+    .authBrand p {
+        font-size: 11px;
+    }
+
+    .authHeading {
+        margin-top: 22px;
+    }
+
+    .authHeading h2 {
+        font-size: 25px;
+    }
+
+    .authHeading p {
+        font-size: 12px;
+    }
+
+    .authForm {
+        margin-top: 19px;
+        gap: 11px;
+    }
+
+    .authField {
+        height: 48px;
+    }
+
+    .authFieldIcon {
+        width: 45px;
+        flex-basis: 45px;
+    }
+
+    .authField input {
+        font-size: 13px;
+    }
+
+    .authOptions {
+        font-size: 11px;
+    }
+
+    .authPrimaryButton {
+        height: 48px;
+        font-size: 14px;
+    }
+
+    .authDivider {
+        margin: 17px 0;
+    }
+
+    .authGoogleButton {
+        height: 47px;
+        font-size: 13px;
+    }
+
+    .authSwitch {
+        font-size: 12px;
+        margin-top: 18px;
+    }
+
+    .authHorizon {
+        margin-left: -20px;
+        margin-right: -20px;
+        height: 65px;
+    }
+
+    .authFooter {
+        font-size: 10px;
+        padding-bottom: 17px;
+    }
+
+    .authSignupCard {
+        padding-bottom: 0;
+    }
+
+    .authTerms {
+        font-size: 10.5px;
+    }
+}
+
+@media (max-width: 380px) {
+    .authPage {
+        padding: 10px 8px 20px;
+    }
+
+    .authCard {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .authHeading h2 {
+        font-size: 23px;
+    }
+
+    .authHeading p {
+        font-size: 11px;
+    }
+
+    .authOptions {
+        gap: 8px;
+    }
+
+    .authHorizon {
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+}
+
+@media (max-width: 800px) {
+    .authPage {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 100svh;
+
+        padding: 20px 12px 30px;
+    }
+
+    .authCard {
+        width: min(456px, 100%);
+
+        justify-self: auto;
+        align-self: auto;
+    }
+}

@@ -101,7 +101,7 @@ export default function OrganizationDetailPage() {
 
                 const organizationResponse =
                     await fetch(
-                        `http://localhost:8080/api/organizations/${organizationId}`
+                        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/organizations/${organizationId}`
                     );
 
                 if (!organizationResponse.ok) {
@@ -130,7 +130,7 @@ export default function OrganizationDetailPage() {
                     projectsPerYearResponse
                 ] = await Promise.all([
                     fetch(
-                        `http://localhost:8080/api/repositories/${organizationId}?size=50`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/repositories/${organizationId}?size=50`,
                         {
                             method: "POST",
 
@@ -146,7 +146,7 @@ export default function OrganizationDetailPage() {
                         }
                     ),
                     fetch(
-                        `http://localhost:8080/api/projects/${organizationId}/years`
+                        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/projects/${organizationId}/years`
                     )
                 ]);
 

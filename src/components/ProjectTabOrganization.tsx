@@ -40,7 +40,7 @@ export default function ProjectTabOrganization({
     organizationId,
 }: {
     projectsPerYear: ProjectsPerYear[];
-    organizationId: string;
+    organizationId: string | undefined;
 }) {
 
     /*
@@ -123,7 +123,7 @@ export default function ProjectTabOrganization({
 
                 const response = await fetch(
 
-                    `http://localhost:8080/api/projects/${organizationId}?page=${page}&size=${pageSize}`,
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/projects/${organizationId}?page=${page}&size=${pageSize}`,
 
                     {
                         method: "POST",

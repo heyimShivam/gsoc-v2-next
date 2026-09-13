@@ -42,7 +42,7 @@ export default function TopContributors({
                 setError(false);
 
                 const response = await fetch(
-                    `http://localhost:8080/api/organizations/${orgId}/contributors?page=1&size=3`,
+                    `/api/organizations/${orgId}/contributors?page=1&size=3`,
                     {
                         signal: controller.signal,
                     }
